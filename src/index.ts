@@ -2,9 +2,6 @@ import { getCurrentHub } from "@sentry/core";
 import type { Integration } from "@sentry/types";
 import { fill, severityLevelFromString } from "@sentry/utils";
 import type { Logger, LoggerOptions, DestinationStream } from "pino";
-import * as util from "util";
-
-export const fmt = util.format;
 
 type PinoLevels = "debug" | "info" | "log" | "warn" | "error" | "fatal";
 
@@ -40,7 +37,6 @@ export class PinoSentry implements Integration {
    * @inheritDoc
    */
   public setupOnce(): void {
-    console.log("setupOnce")
     for (const level of levels) {
       fill(this.logger, level, createPinoWrapper(level));
     }
