@@ -1,6 +1,6 @@
 {
   "name": "pino-sentry-breadcrumbs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.mjs",
   "exports": {
@@ -12,7 +12,7 @@
   "files": [
     "dist"
   ],
-  "types": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
