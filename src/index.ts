@@ -1,7 +1,7 @@
 import { getCurrentHub } from "@sentry/core";
-import type { Integration } from "@sentry/types";
 import { fill, severityLevelFromString } from "@sentry/utils";
-import type { Logger, LoggerOptions, DestinationStream } from "pino";
+import type { Integration } from "@sentry/types";
+import type { BaseLogger } from "pino";
 
 type PinoLevels = "debug" | "info" | "log" | "warn" | "error" | "fatal";
 
@@ -21,7 +21,7 @@ export class PinoSentry implements Integration {
    * @param logger - Your application's Pino logger.
    */
   constructor(
-    private readonly logger: Logger<LoggerOptions | DestinationStream>
+    private readonly logger: BaseLogger
   ) {}
   /**
    * @inheritDoc
@@ -50,7 +50,7 @@ function createPinoWrapper(
     const sentryLevel = severityLevelFromString(level);
 
     /* eslint-disable prefer-rest-params */
-    return function (this: Logger<LoggerOptions | DestinationStream>): void {
+    return function (this: BaseLogger): void {
       const inputsOfFunctionCall = deducePinoLoggerArguments(arguments);
       if (getCurrentHub().getIntegration(PinoSentry)) {
         getCurrentHub().addBreadcrumb(
