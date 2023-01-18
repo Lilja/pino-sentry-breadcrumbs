@@ -16,5 +16,10 @@ init({
 })
 ```
 
+## Installation
+`npm install pino-sentry-breadcrumbs`
+
+`yarn add pino-sentry-breadcrumbs`
+
 ## State
 Should be fully functional.
